@@ -4,12 +4,12 @@ import streamlit as st
 # Page Title and Descriptions
 st.title("👩‍🏫 Woodcock-Johnson IV Report Automator 🤖")
 st.markdown("""
-**This app is a tool to automatically generate and fill out reports for student's with an [IEP](https://en.wikipedia.org/wiki/Individualized_Education_Program)**
+**This app is a tool to automatically generate and fill out reports for students being evaluated for an [IEP](https://en.wikipedia.org/wiki/Individualized_Education_Program)**
 
-The reports use data gathered and generated under the [Woodcock–Johnson Tests of Cognitive Abilities (WJ IV)](https://riversideinsights.com/woodcock_johnson_iv) framework to assess a student's cognitive abilities.
+The reports use data gathered and generated under the [Woodcock–Johnson Tests of Academic Achievement (WJ IV)](https://riversideinsights.com/woodcock_johnson_iv) framework to assess a student's cognitive abilities.
 
 This application can be used by educators under the following assumptions:
-1. Your school uses [Riverside Score](https://riversidescore.com/) to generate Woodcock–Johnson Tests of Cognitive Abilities
+1. Your school uses [Riverside Score](https://riversidescore.com/) to generate Woodcock–Johnson Tests of Academic Achievement and Oral Language
 2. You have 1+ saved *Examinees* in the "My Recent Examinees" table 👇
 """)
 st.image("woodcock_johnson_dashboard.png")
