@@ -8,11 +8,11 @@ This application can be used by educators **under the following assumptions:**
 
 1. Your school uses Riverside Score to generate Woodcock–Johnson Tests of Cognitive Abilities
 
-1. You have 1+ saved Examinees in the "My Recent Examinees" table 👇
+2. You have 1+ saved Examinees in the "My Recent Examinees" table 👇
 
 ![My Recent Examinees](/readme_images/woodcock_johnson_dashboard.png?raw=true "My Recent Examinees")
 
-1. You want to run reports for WJ IV Tests of Achievement Form A and Extended (Opposed to WJ IV Tests of Oral Language, etc.)
+3. You want to run reports for WJ IV Tests of Achievement Form A and Extended (Opposed to WJ IV Tests of Oral Language, etc.)
 
 > :warning: After generating the reports you must manually edit the test dates **(DATES)** text in the doc which appears in this line:!
 `Administered by: {{ resource_sepcialist_name }} DATES`
