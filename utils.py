@@ -18,10 +18,11 @@ from docxtpl import DocxTemplate
 def timer_func(func):
     # This function shows the execution time of the function object passed
     def wrap_func(*args, **kwargs):
-        t1 = time()
+        t1 = time.time()
         result = func(*args, **kwargs)
-        t2 = time()
-        print(f'********\nExecuted in {(t2-t1):.4f}s\n********\n')
+        t2 = time.time()
+        st.markdown(
+            f'********\nFunction `{func.__name__}` executed in {(t2-t1):.2f}s\n********\n')
         return result
     return wrap_func
 
@@ -42,10 +43,10 @@ def init_user_inputs():
     return resource_sepcialist_name, student_last_names, username, password, scoring_template_name
 
 
+@timer_func
 def login(driver, username, password):
     # Go to Webpage
     driver.get("https://riversidescore.com/")
-    time.sleep(random.randint(2, 5))
     riverside_score_username = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, 'fld_tb_3')))
     riverside_score_username.send_keys(username)
@@ -55,21 +56,21 @@ def login(driver, username, password):
     login = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CSS_SELECTOR, '#root > div > div.login-page-cls > div.login-right > form > div.field-wrapper > button')))
     login.click()
-    time.sleep(random.randint(2, 5))
     woodcock = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CSS_SELECTOR, '#root > div > div:nth-child(1) > div.product-ribbon > button')))
     woodcock.click()
-    time.sleep(5)
 
 
+@timer_func
 def get_student_urls(driver, student_last_names):
+    time.sleep(random.randint(1, 3))
     # 1. Select a student name from "My Recent Examinees"
     # Send GET request
     html = driver.page_source
     # convert to beautiful soup object
     soup = BeautifulSoup(html, 'html.parser')
 
-    time.sleep(5)
+    time.sleep(random.randint(1, 3))
     # Find all HTML tables with class "search-results"
     # Get the 1st table
     table = soup.find_all('table', class_="search-results")[0]
@@ -82,6 +83,7 @@ def get_student_urls(driver, student_last_names):
     return urls
 
 
+@timer_func
 def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepcialist_name):
     # For each student go to the report section and generate the reports
     for url in urls:
@@ -90,7 +92,6 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
         report = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.LINK_TEXT, 'WJ IV Tests of Achievement Form A and Extended')))
         report.click()
-        time.sleep(1)
         run_report = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, 'btnRunReport')))
         run_report.click()
@@ -123,7 +124,7 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
         run_final_report.click()
 
         # 8. Scrape all Table Data
-        time.sleep(2)
+        time.sleep(random.randint(2, 3))
         html = driver.page_source
         # convert to beautiful soup object
         soup = BeautifulSoup(html, 'html.parser')
@@ -207,4 +208,3 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
         st.write(
             f"Saved report for {students_name} inside `{os.getcwd()}/woodcock_johnson_reports` !")
         st.markdown("## ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
-        time.sleep(4)
