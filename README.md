@@ -24,6 +24,11 @@ This application can be used by educators **under the following assumptions:**
 > :warning: After generating the reports you check them and see the highlighted words / phrases to spot check that the app input them correctly.
 
 ---
+## Setup
+
+* TODO
+
+---
 ## Example Usage
 
 * TODO
