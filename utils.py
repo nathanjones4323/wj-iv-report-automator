@@ -29,7 +29,7 @@ def timer_func(func):
 
 def init_user_inputs():
     resource_sepcialist_name = st.text_input(
-        "Enter the name of the Resource Specialist (Likely your name)", value="Lizette Juarez")
+        "Enter the name of the Resource Specialist (Likely your name)")
     student_last_names = st.text_input(
         "Enter a Comma Seperated List of your student's last names only", help="**For Example:** `Jones, Juarez, ...`")
     student_last_names = [name.lower().strip()
@@ -37,9 +37,9 @@ def init_user_inputs():
     username = st.text_input(
         "Enter your Riverside Score Username", help="[Riverside Score Website](https://riversidescore.com/)")
     password = st.text_input("Enter your Riverside Score Password",
-                             help="[Riverside Score Website](https://riversidescore.com/)")
+                             help="[Riverside Score Website](https://riversidescore.com/)", type="password")
     scoring_template_name = st.text_input("Enter the scoring template you wish to use for the generated report",
-                                          help="The template name must match exactly with what is shown online", value='Lizette_MyTemplate')
+                                          help="The template name must match exactly with what is shown online")
     return resource_sepcialist_name, student_last_names, username, password, scoring_template_name
 
 
@@ -76,7 +76,7 @@ def get_student_urls(driver, student_last_names):
     table = soup.find_all('table', class_="search-results")[0]
     urls = []
     for a in table.find_all('a', href=True):
-        # Replace with Last Names of the all desired students
+        # Find URL by Student Last Name
         if any(ext in a.text.lower() for ext in student_last_names):
             url = "https://wjscore.com/" + a['href']
             urls.append(url)
@@ -88,12 +88,18 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
     # For each student go to the report section and generate the reports
     for url in urls:
         driver.get(url)
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+        table = soup.find_all('table', class_="search-results")[0]
+        scraped_table = pd.DataFrame(pd.read_html(table.prettify())[0])
+        test_date = scraped_table[scraped_table["Test"] ==
+                                  "WJ IV Tests of Achievement Form A and Extended"]["Test Date"]
         # 3. Scroll to bottom and "Run Report"
         report = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.LINK_TEXT, 'WJ IV Tests of Achievement Form A and Extended')))
         report.click()
         run_report = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, 'btnRunReport')))
+            EC.element_to_be_clickable((By.ID, 'btnRunReport')))
         run_report.click()
         # Let the webpage autofill student information
         time.sleep(4)
@@ -178,7 +184,8 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
             "resource_sepcialist_name": resource_sepcialist_name,
             "students_gender_his_her": students_gender_his_her,
             "students_name": students_name,
-            "students_age": students_age
+            "students_age": students_age,
+            "test_date": test_date
         }
         combined_table["cluster_in_jinja_format"] = [element.replace(
             ' ', '_') for element in combined_table["CLUSTER/Test"]]

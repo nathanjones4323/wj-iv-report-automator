@@ -12,12 +12,11 @@ This application can be used by educators under the following assumptions:
 1. Your school uses [Riverside Score](https://riversidescore.com/) to generate Woodcock–Johnson Tests of Academic Achievement and Oral Language
 2. You have 1+ saved *Examinees* in the "My Recent Examinees" table 👇
 """)
-st.image("woodcock_johnson_dashboard.png")
+st.image("readme_images/woodcock_johnson_dashboard.png")
 st.markdown("""
 3. You want to run reports for **WJ IV Tests of Achievement Form A and Extended** (Opposed to **WJ IV Tests of Oral Language**, etc.)
 """)
-st.warning(
-    "After generating the reports you must **manually edit the test dates (DATES)** text in the doc which appears in this line:\n\n**Administered by: {{ resource_sepcialist_name }} DATES**")
+st.warning("The generated report will be highlighted where the script made edits, or where you can put an in depth ancedote on the student")
 
 # User Inputs
 resource_sepcialist_name, student_last_names, username, password, scoring_template_name = init_user_inputs()

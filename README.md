@@ -19,5 +19,11 @@ This application can be used by educators **under the following assumptions:**
 
 3. You want to run reports for WJ IV Tests of Achievement Form A and Extended (Opposed to WJ IV Tests of Oral Language, etc.)
 
-> :warning: After generating the reports you must manually edit the test dates **(DATES)** text in the doc which appears in this line:!
-`Administered by: {{ resource_sepcialist_name }} DATES`
+4. You have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed for the correct OS (Window, Mac, Linux)
+
+> :warning: After generating the reports you check them and see the highlighted words / phrases to spot check that the app input them correctly.
+
+---
+## Example Usage
+
+* TODO
