@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 import streamlit as st
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Page Title and Descriptions
@@ -24,16 +25,15 @@ st.warning("The generated report will be highlighted where the script made edits
 
 # Selenium Options
 options = Options()
-options.add_argument("--headless")
-options.add_argument("--window-size=1400,600")
+options.headless = True
 
 # User Inputs
 resource_sepcialist_name, student_last_names, username, password, scoring_template_name = init_user_inputs()
 if st.button("Run it !"):
     with st.spinner("⏳ Please wait while we fetch the data... (This might take a minute so grab a coffee ☕)"):
         t1 = time.time()
-        driver = webdriver.Chrome(options=options, service=Service(
-            ChromeDriverManager().install()))
+        driver = webdriver.Remote(
+            "http://selenium:4444/wd/hub", options=options)
         # Login to Homepage
         login(driver, username, password)
 
@@ -48,3 +48,4 @@ if st.button("Run it !"):
             f"### ✅ All reports completed. Process took {(t2-t1):.2f}s")
         st.markdown(
             f"You can view the completed reports inside the woodcock_johnson_reports folder located at {os.getcwd()}/woodcock_johnson_reports")
+        driver.quit()

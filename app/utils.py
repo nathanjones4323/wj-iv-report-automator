@@ -85,6 +85,7 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
     # For each student go to the report section and generate the reports
     for url in urls:
         driver.get(url)
+        time.sleep(1)
         html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
         table = soup.find_all('table', class_="search-results")[0]
@@ -175,7 +176,7 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
         st.write(f"Birth Date: {bday}")
 
         # Read in Word template and fill it out
-        tpl = DocxTemplate('WJ-IV Report Template_For Nate.docx')
+        tpl = DocxTemplate('WJ-IV Report Template.docx')
         # Context dictionary (Key Values to replace in Word Doc)
         context = {
             "resource_sepcialist_name": resource_sepcialist_name,
