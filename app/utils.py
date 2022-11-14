@@ -128,7 +128,7 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
         run_final_report.click()
 
         # 8. Scrape all Table Data
-        time.sleep(random.randint(2, 3))
+        time.sleep(3)
         html = driver.page_source
         # convert to beautiful soup object
         soup = BeautifulSoup(html, 'html.parser')

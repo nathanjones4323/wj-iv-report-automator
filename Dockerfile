@@ -10,6 +10,8 @@ RUN mkdir /app
 
 COPY ./app /app
 
+COPY . .
+
 WORKDIR /app
 
 EXPOSE 8501
