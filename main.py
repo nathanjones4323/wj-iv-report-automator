@@ -23,6 +23,8 @@ resource_sepcialist_name, student_last_names, username, password, scoring_templa
 if st.button("Run it !"):
     with st.spinner("⏳ Please wait while we fetch the data... (This might take a minute so grab a coffee ☕)"):
         t1 = time.time()
+        # options = webdriver.ChromeOptions()
+        # options.add_argument("--headless")
         driver = webdriver.Chrome(service=Service(
             ChromeDriverManager().install()))
         # Login to Homepage
