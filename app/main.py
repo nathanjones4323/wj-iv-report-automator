@@ -41,12 +41,16 @@ if st.button("Run it !"):
         try:
             login(driver, username, password)
         except Exception as e:
+            st.write(
+                "Hmmm this error shouldn't happening. Please try re-running and reach out if the problem persists")
             driver.quit()
 
         # Get URLs for students to report on
         try:
             urls = get_student_urls(driver, student_last_names)
         except Exception as e:
+            st.write(
+                "Hmmm this error shouldn't happening. Please try re-running and reach out if the problem persists")
             driver.quit()
 
         # Create and Complete Reports
@@ -54,6 +58,8 @@ if st.button("Run it !"):
             generate_and_fill_report(
                 driver, urls, scoring_template_name, resource_sepcialist_name)
         except Exception as e:
+            st.write(
+                "Hmmm this error shouldn't happening. Please try re-running and reach out if the problem persists")
             driver.quit()
         t2 = time.time()
         st.markdown(
