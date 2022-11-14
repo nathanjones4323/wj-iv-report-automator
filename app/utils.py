@@ -206,8 +206,6 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
 
         tpl.render(context)
         students_name_file_formatted = students_name.lower().replace(' ', '_')
-        if not os.path.exists(f"{os.getcwd()}/woodcock_johnson_reports"):
-            os.makedirs(f"{os.getcwd()}/woodcock_johnson_reports")
         tpl.save(
             f"{os.getcwd()}/woodcock_johnson_reports/{students_name_file_formatted}_{datetime.today().strftime('%Y-%m-%d')}.docx")
         st.write(
