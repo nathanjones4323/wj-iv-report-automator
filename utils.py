@@ -2,15 +2,12 @@ from datetime import datetime, date
 from bs4 import BeautifulSoup
 import pandas as pd
 import os
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import Select
 import time
 import random
-from webdriver_manager.chrome import ChromeDriverManager
 import streamlit as st
 from docxtpl import DocxTemplate
 
@@ -58,7 +55,7 @@ def login(driver, username, password):
     login.click()
     woodcock = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CSS_SELECTOR, '#root > div > div:nth-child(1) > div.product-ribbon > button')))
-    woodcock.click()
+    driver.execute_script("arguments[0].click();", woodcock)
 
 
 @timer_func

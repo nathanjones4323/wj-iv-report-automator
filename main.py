@@ -1,5 +1,9 @@
 from utils import *
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
 import streamlit as st
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Page Title and Descriptions
 st.title("👩‍🏫 Woodcock-Johnson IV Report Automator 🤖")
@@ -18,12 +22,17 @@ st.markdown("""
 """)
 st.warning("The generated report will be highlighted where the script made edits, or where you can put an in depth ancedote on the student")
 
+# Selenium Options
+options = Options()
+options.add_argument("--headless")
+options.add_argument("--window-size=1400,600")
+
 # User Inputs
 resource_sepcialist_name, student_last_names, username, password, scoring_template_name = init_user_inputs()
 if st.button("Run it !"):
     with st.spinner("⏳ Please wait while we fetch the data... (This might take a minute so grab a coffee ☕)"):
         t1 = time.time()
-        driver = webdriver.Chrome(service=Service(
+        driver = webdriver.Chrome(options=options, service=Service(
             ChromeDriverManager().install()))
         # Login to Homepage
         login(driver, username, password)
