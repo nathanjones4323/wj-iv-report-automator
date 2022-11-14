@@ -38,14 +38,23 @@ if st.button("Run it !"):
         driver = webdriver.Remote(
             "http://selenium:4444/wd/hub", options=options)
         # Login to Homepage
-        login(driver, username, password)
+        try:
+            login(driver, username, password)
+        except Exception as e:
+            driver.quit()
 
         # Get URLs for students to report on
-        urls = get_student_urls(driver, student_last_names)
+        try:
+            urls = get_student_urls(driver, student_last_names)
+        except Exception as e:
+            driver.quit()
 
         # Create and Complete Reports
-        generate_and_fill_report(
-            driver, urls, scoring_template_name, resource_sepcialist_name)
+        try:
+            generate_and_fill_report(
+                driver, urls, scoring_template_name, resource_sepcialist_name)
+        except Exception as e:
+            driver.quit()
         t2 = time.time()
         st.markdown(
             f"### ✅ All reports completed. Process took {(t2-t1):.2f}s")
