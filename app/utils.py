@@ -2,15 +2,12 @@ from datetime import datetime, date
 from bs4 import BeautifulSoup
 import pandas as pd
 import os
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import Select
 import time
 import random
-from webdriver_manager.chrome import ChromeDriverManager
 import streamlit as st
 from docxtpl import DocxTemplate
 
@@ -58,7 +55,7 @@ def login(driver, username, password):
     login.click()
     woodcock = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CSS_SELECTOR, '#root > div > div:nth-child(1) > div.product-ribbon > button')))
-    woodcock.click()
+    driver.execute_script("arguments[0].click();", woodcock)
 
 
 @timer_func
@@ -88,6 +85,7 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
     # For each student go to the report section and generate the reports
     for url in urls:
         driver.get(url)
+        time.sleep(1)
         html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
         table = soup.find_all('table', class_="search-results")[0]
@@ -130,7 +128,7 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
         run_final_report.click()
 
         # 8. Scrape all Table Data
-        time.sleep(random.randint(2, 3))
+        time.sleep(3)
         html = driver.page_source
         # convert to beautiful soup object
         soup = BeautifulSoup(html, 'html.parser')
@@ -178,7 +176,7 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
         st.write(f"Birth Date: {bday}")
 
         # Read in Word template and fill it out
-        tpl = DocxTemplate('WJ-IV Report Template_For Nate.docx')
+        tpl = DocxTemplate('WJ-IV Report Template.docx')
         # Context dictionary (Key Values to replace in Word Doc)
         context = {
             "resource_sepcialist_name": resource_sepcialist_name,
@@ -208,8 +206,6 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
 
         tpl.render(context)
         students_name_file_formatted = students_name.lower().replace(' ', '_')
-        if not os.path.exists(f"{os.getcwd()}/woodcock_johnson_reports"):
-            os.makedirs(f"{os.getcwd()}/woodcock_johnson_reports")
         tpl.save(
             f"{os.getcwd()}/woodcock_johnson_reports/{students_name_file_formatted}_{datetime.today().strftime('%Y-%m-%d')}.docx")
         st.write(

@@ -1,17 +1,21 @@
 FROM python:3.10
 
-RUN apt-get update && apt-get install -y
+ENV PYTHONBUFFERED 1
 
-WORKDIR /app
-
-COPY requirements.txt ./requirements.txt
+COPY ./requirements.txt /requirements.txt
 
 RUN pip3 install -r requirements.txt
 
+RUN mkdir /app
+
+COPY ./app /app
+
+COPY . .
+
+WORKDIR /app
+
 EXPOSE 8501
 
-COPY . /app
+# ENTRYPOINT ["streamlit", "run"]
 
-ENTRYPOINT ["streamlit", "run"]
-
-CMD ["main.py"]
+# CMD ["main.py"]
