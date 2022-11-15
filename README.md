@@ -26,7 +26,36 @@ This application can be used by educators **under the following assumptions:**
 ---
 ## Setup
 
-* TODO
+1. Install Docker Desktop and make sure it's running
+
+2. Open your `terminal` (Mac) or `command prompt` (Windows)
+
+* For Mac users, you can hit ⌘ (command) + Space to pull up **Spotlight Search**. Type in "terminal" and open the default terminal app.
+![Spotlight Search](app/readme_images/spotlight_search.png?raw=true "Spotlight Search")
+
+* For Windows users, you can [open command prompt following these instructions](https://www.wikihow.com/Open-Terminal-in-Windows)
+
+3. Copy and paste the following command into the newly opened terminal or command prompt and hit Enter
+```
+git clone https://github.com/nathanjones4323/wj-iv-report-automator.git
+```
+4. Copy and paste the following command into the same terminal or command prompt
+```
+cd wj-iv-report-automator && docker compose build && docker compose up
+```
+
+Step 4 might take a few minutes if this is the first time setting it up.
+
+5. Check Docker Desktop and you should see 2 "images" in use
+
+![Docker Desktop Image Confirmation](app/readme_images/spotlight_search.png?raw=true "Docker Desktop Image Confirmation")
+
+6. Open your internet browser and paste in the following url to access the app and follow the instructions to automate your reports !
+```
+http://localhost:8501/
+```
+
+![Streamlit App](app/readme_images/streamlit-app.png?raw=true "Streamlit App")
 
 ---
 ## Example Usage
