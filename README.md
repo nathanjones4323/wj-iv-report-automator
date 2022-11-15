@@ -15,7 +15,7 @@ This application can be used by educators **under the following assumptions:**
 
 2. You have 1+ saved Examinees in the "My Recent Examinees" table 👇
 
-![My Recent Examinees](/readme_images/woodcock_johnson_dashboard.png?raw=true "My Recent Examinees")
+![My Recent Examinees](app/readme_images/woodcock_johnson_dashboard.png?raw=true "My Recent Examinees")
 
 3. You want to run reports for WJ IV Tests of Achievement Form A and Extended (Opposed to WJ IV Tests of Oral Language, etc.)
 
