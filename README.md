@@ -48,7 +48,7 @@ Step 4 might take a few minutes if this is the first time setting it up.
 
 5. Check Docker Desktop and you should see 2 "images" in use
 
-![Docker Desktop Image Confirmation](app/readme_images/spotlight_search.png?raw=true "Docker Desktop Image Confirmation")
+![Docker Desktop Image Confirmation](app/readme_images/docker_confirm.png?raw=true "Docker Desktop Image Confirmation")
 
 6. Open your internet browser and paste in the following url to access the app and follow the instructions to automate your reports !
 ```
