@@ -36,15 +36,19 @@ This application can be used by educators **under the following assumptions:**
 * For Windows users, you can [open command prompt following these instructions](https://www.wikihow.com/Open-Terminal-in-Windows)
 
 3. Copy and paste the following command into the newly opened terminal or command prompt and hit Enter
+
 ```
 git clone https://github.com/nathanjones4323/wj-iv-report-automator.git
 ```
+> :warning: If you are prompted to download `xcode tools`, then do it. You'll need the download to complete and you can re-run the command from step 3 before continuing.
+
 4. Copy and paste the following command into the same terminal or command prompt
+
 ```
 cd wj-iv-report-automator && docker compose build && docker compose up
 ```
 
-Step 4 might take a few minutes if this is the first time setting it up.
+**Step 4 might take a few minutes if this is the first time setting it up**
 
 5. Check Docker Desktop and you should see 2 "images" in use
 
@@ -54,7 +58,6 @@ Step 4 might take a few minutes if this is the first time setting it up.
 ```
 http://localhost:8501/
 ```
-
 ![Streamlit App](app/readme_images/streamlit-app.png?raw=true "Streamlit App")
 
 ---

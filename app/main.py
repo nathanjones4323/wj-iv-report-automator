@@ -61,5 +61,11 @@ if st.button("Run it !"):
         st.markdown(
             f"### ✅ All reports completed. Process took {(t2-t1):.2f}s")
         st.markdown(
-            f"You can view the completed reports inside the woodcock_johnson_reports folder located at {os.getcwd()}/woodcock_johnson_reports")
+            f"""
+            To view the reports, open **Finder** and then press `⌘ + Shift + G` 
+            
+           **Paste the following and hit enter:**
+            
+            `~/app/woodcock_johnson_reports`
+            """)
         driver.quit()
