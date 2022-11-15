@@ -66,6 +66,6 @@ if st.button("Run it !"):
             
            **Paste the following and hit enter:**
             
-            `~/app/woodcock_johnson_reports`
+            `~/wj-iv-report-automator/app/woodcock_johnson_reports`
             """)
         driver.quit()
