@@ -22,10 +22,6 @@ st.markdown("""
 3. You want to run reports for **WJ IV Tests of Achievement Form A and Extended** (Opposed to **WJ IV Tests of Oral Language**, etc.)
 """)
 st.warning("The generated report will be highlighted where the script made edits, or where you can put an in depth ancedote on the student")
-
-st.write(os.getcwd())
-st.write(f"{os.getcwd()}/woodcock_johnson_reports")
-st.write(os.path.exists(f"{os.getcwd()}/woodcock_johnson_reports"))
 # Selenium Options
 options = Options()
 options.headless = True
