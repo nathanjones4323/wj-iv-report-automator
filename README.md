@@ -63,14 +63,14 @@ http://localhost:8501/
 ---
 ## Setup Video Walkthrough
 
-#### Installing Docker and Running the App 
+### Installing Docker and Running the App 
 
 https://www.loom.com/share/3c1111b69e78453bb0e4c4185a5be74f
 
-#### Stopping the App After Finished Generating the Reports 
+### Stopping the App After Finished Generating the Reports 
 
 https://www.loom.com/share/76415ae3e53c426eb44b2c6f129b9698
 
-#### Restarting the App to Generate More Reports 
+### Restarting the App to Generate More Reports 
 
 https://www.loom.com/share/e361b477fbc3487e9984841dd19b2d43
