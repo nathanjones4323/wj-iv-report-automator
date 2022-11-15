@@ -61,6 +61,13 @@ http://localhost:8501/
 ![Streamlit App](app/readme_images/streamlit-app.png?raw=true "Streamlit App")
 
 ---
-## Example Usage
+## Setup Video Walkthrough
 
-* TODO
+<b> Installing Docker and Running the App </b>
+
+https://www.loom.com/share/3c1111b69e78453bb0e4c4185a5be74f
+
+<b> Stopping the App After Finished Generating the Reports </b>
+
+
+<b> Restarting the App to Generate More Reports </b>
