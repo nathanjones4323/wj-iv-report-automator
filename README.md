@@ -25,6 +25,8 @@ This application can be used by educators **under the following assumptions:**
 
 ---
 ## Setup
+### Video Walkthrough
+https://www.loom.com/share/3c1111b69e78453bb0e4c4185a5be74f
 
 1. Install Docker Desktop and make sure it's running
 
