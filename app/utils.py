@@ -102,7 +102,7 @@ def generate_and_fill_report(driver, urls, scoring_template_name, resource_sepci
         # Let the webpage autofill student information
         time.sleep(4)
 
-        # 4. Select "Lizette_MyTemplate" under "Score Selection Template"
+        # 4. Select a scoring template under "Score Selection Template"
         scoring_template = Select(WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, 'score-report-template-select'))))
         # select by visible text

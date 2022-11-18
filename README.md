@@ -76,3 +76,14 @@ https://www.loom.com/share/76415ae3e53c426eb44b2c6f129b9698
 ### Restarting the App to Generate More Reports 
 
 https://www.loom.com/share/e361b477fbc3487e9984841dd19b2d43
+
+---
+## Conclusion / After Thoughts
+
+Teachers play a critical role in shaping our future and current society. They are often overworked and underpaid, so ideally this app can help ease the burden on teachers in a small way !
+
+> :warning: While this tool is meant to help automate some manual work done by teachers, it is the responsibility of the educator to ensure the accuracy of the document, so look it over once it has been generated !
+
+> **Note** One way you can double check that everything is correct is by comparing an already completed report to this
+
+Hopefully this app increases your productivity and gives you more time to focus on the actual import part of your job *-- the success of the students*
