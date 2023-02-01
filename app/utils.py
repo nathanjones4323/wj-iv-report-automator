@@ -29,6 +29,7 @@ def init_user_inputs():
         "Enter the name of the Resource Specialist (Likely your name)")
     student_last_names = st.text_input(
         "Enter a Comma Seperated List of your student's last names only", help="**For Example:** `Jones, Juarez, ...`")
+    st.warning("Please make sure you only entered the **LAST NAMES** of each student separated by a comma ")
     student_last_names = [name.lower().strip()
                           for name in student_last_names.split(',')]
     username = st.text_input(
